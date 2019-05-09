@@ -3,4 +3,4 @@ project(Post_Traitement)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Post_Traitement main.cpp)
+add_executable(Post_Traitement main.cpp core/functions.cpp headers/functions.h model/Point.cpp headers/Point.h)

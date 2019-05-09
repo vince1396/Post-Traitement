@@ -1,19 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <limits>
-
-// Place virtual cursor at the first line to process
-void goToDataStart(std::ifstream& fileFlow, std::string& line)
-{
-    while(getline(fileFlow, line))
-    {
-        if(line == "[DATA]")
-        {
-            std::getline(fileFlow, line);
-            break;
-        }
-    }
-}
+#include <vector>
+#include "headers/functions.h"
+#include "headers/Point.h"
 
 int main() {
 
@@ -29,15 +19,20 @@ int main() {
     // Opening file in read mode
     std::ifstream fileFlow(filePath.c_str(), std::ios::in);
 
-    // If opening went well
+    // If file opening went well
     if(fileFlow)
     {
         // =============================================================================================================
         std::cout << "| - File opened with success ("+ filePath +") \n" << std::endl;
 
         std::string line;
+        std::vector<std::string> lineTab(1);
+
         goToDataStart(fileFlow, line);
-        std::cout << line << std::endl;
+        excludeNullData(fileFlow, line, lineTab);
+        displayVector(lineTab);
+
+        Point test{};
 
         fileFlow.close();
         // =============================================================================================================
@@ -45,7 +40,7 @@ int main() {
     else // If an error occured during file opening
     {
         // Display error message
-        std::cerr << "| - File couldn't be opened" << std::endl;
+        std::cerr << "| - File couldn't be opened ("+filePath+")" << std::endl;
     }
 
     return 0;
