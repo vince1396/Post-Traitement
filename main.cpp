@@ -2,6 +2,8 @@
 #include <fstream>
 #include <limits>
 #include <vector>
+#include <math.h>
+#include <iomanip>
 #include "headers/functions.h"
 #include "headers/Point.h"
 

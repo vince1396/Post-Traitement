@@ -70,35 +70,35 @@ void createPoint(std::vector<std::string>& vector, std::vector<Point>& pointTab)
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double mLong = std::stod(string.substr(0, cursor2));
+        long double mLong = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double lat = std::stod(string.substr(0, cursor2));
+        long double lat = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f1 = std::stod(string.substr(0, cursor2));
+        long double f1 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f2 = std::stod(string.substr(0, cursor2));
+        long double f2 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f3 = std::stod(string.substr(0, cursor2));
+        long double f3 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f4 = std::stod(string.substr(0, cursor2));
+        long double f4 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f5 = std::stod(string.substr(0, cursor2));
+        long double f5 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         cursor2 = string.find(';', cursor);
-        double f6 = std::stod(string.substr(0, cursor2));
+        long double f6 = std::stod(string.substr(0, cursor2));
         string = string.substr(cursor2+1);
 
         //Point point(hour, minute, second, ms, mLong, lat, f1, f2, f3, f4, f5, f6);
