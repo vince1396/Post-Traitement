@@ -11,55 +11,42 @@ class Point
 {
 
     public:
-        int getHour() const;
 
-        void setHour(int mHour);
+        Point();
+        Point(int hour, int minute, int second, int ms, double mLong, double lat, double f1, double f2, double f3, double f4, double f5, double f6);
+        ~Point();
 
-        int getMinute() const;
-
-        void setMinute(int mMinute);
-
-        int getSecond() const;
-
-        void setSecond(int mSecond);
-
-        int getMs() const;
-
-        void setMs(int mMs);
-
+        int    getHour() const;
+        int    getMinute() const;
+        int    getSecond() const;
+        int    getMs() const;
         double getLong() const;
-
-        void setLong(double mLong);
-
         double getLat() const;
-
-        void setLat(double mLat);
-
         double getF1() const;
-
-        void setF1(double mF1);
-
         double getF2() const;
-
-        void setF2(double mF2);
-
         double getF3() const;
-
-        void setF3(double mF3);
-
         double getF4() const;
-
-        void setF4(double mF4);
-
         double getF5() const;
-
-        void setF5(double mF5);
-
         double getF6() const;
 
-        void setF6(double mF6);
+        void   setHour(int mHour);
+        void   setMinute(int mMinute);
+        void   setSecond(int mSecond);
+        void   setMs(int mMs);
+        void   setLong(double mLong);
+        void   setLat(double mLat);
+        void   setF1(double mF1);
+        void   setF2(double mF2);
+        void   setF3(double mF3);
+        void   setF4(double mF4);
+        void   setF5(double mF5);
+        void   setF6(double mF6);
 
-    private:
+        void displayPoint();
+
+
+
+private:
 
         int m_hour;
         int m_minute;

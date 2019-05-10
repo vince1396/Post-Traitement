@@ -26,13 +26,15 @@ int main() {
         std::cout << "| - File opened with success ("+ filePath +") \n" << std::endl;
 
         std::string line;
-        std::vector<std::string> lineTab(1);
+        std::vector<std::string> lineTab(0);
 
         goToDataStart(fileFlow, line);
         excludeNullData(fileFlow, line, lineTab);
-        displayVector(lineTab);
 
-        Point test{};
+        std::vector<Point> pointTab(0);
+
+        createPoint(lineTab, pointTab);
+        displayAllPoints(pointTab);
 
         fileFlow.close();
         // =============================================================================================================
