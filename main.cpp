@@ -4,39 +4,32 @@
 #include <vector>
 #include <math.h>
 #include <iomanip>
-#include "headers/functions.h"
+#include "headers/general.h"
 #include "headers/Point.h"
+#include "headers/View.h"
+#include "headers/optimizedTxtFile.h"
 
 int main() {
 
     // ===================== VIEW ======================
-    std::cout << "\n=====================" <<  std::endl;
-    std::cout << "Script starting..." <<       std::endl;
-    std::cout << "===================== \n" << std::endl;
+    View::displayScriptStart();
     // =================================================
 
     // Absolute path of the file to process
-    std::string const filePath("/home/vincent/CLionProjects/Post-Traitement/mesures/mesure1.asc");
+    std::string const filePath("/home/vincent/CLionProjects/Post-Traitement/mesures/site2.txt");
+    std::ifstream fileFlow(filePath, std::ios::in);
 
-    // Opening file in read mode
-    std::ifstream fileFlow(filePath.c_str(), std::ios::in);
 
     // If file opening went well
     if(fileFlow)
     {
         // =============================================================================================================
-        std::cout << "| - File opened with success ("+ filePath +") \n" << std::endl;
+        View::successOpenFile(filePath);
 
-        std::string line;
-        std::vector<std::string> lineTab(0);
+        std::vector<std::string> optimizedData;
+        getOptimizedData(fileFlow, optimizedData);
 
-        goToDataStart(fileFlow, line);
-        excludeNullData(fileFlow, line, lineTab);
-
-        std::vector<Point> pointTab(0);
-
-        createPoint(lineTab, pointTab);
-        displayAllPoints(pointTab);
+        displayVector(optimizedData);
 
         fileFlow.close();
         // =============================================================================================================
@@ -44,7 +37,7 @@ int main() {
     else // If an error occured during file opening
     {
         // Display error message
-        std::cerr << "| - File couldn't be opened ("+filePath+")" << std::endl;
+        View::errorOpenFile(filePath);
     }
 
     return 0;

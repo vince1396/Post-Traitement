@@ -27,10 +27,10 @@ Point::~Point() = default;
 // =====================================================================================================================
 // ========== GETTERS ==========
 
-int    Point::getHour()   const { return m_hour; }
-int    Point::getMinute() const { return m_minute; }
-int    Point::getSecond() const { return m_second; }
-int    Point::getMs()     const { return m__ms; }
+int         Point::getHour()   const { return m_hour; }
+int         Point::getMinute() const { return m_minute; }
+int         Point::getSecond() const { return m_second; }
+int         Point::getMs()     const { return m__ms; }
 long double Point::getLong()   const { return m_long; }
 long double Point::getLat()    const { return m_lat; }
 long double Point::getF1()     const { return m_f1; }
@@ -44,10 +44,10 @@ long double Point::getF6()     const { return m_f6; }
 // =====================================================================================================================
 // ========== SETTERS ==========
 
-void   Point::setHour(int mHour)     { m_hour = mHour; }
-void   Point::setMinute(int mMinute) { m_minute = mMinute; }
-void   Point::setSecond(int mSecond) { m_second = mSecond; }
-void   Point::setMs(int mMs)         { m__ms = mMs; }
+void   Point::setHour(int mHour)          { m_hour = mHour; }
+void   Point::setMinute(int mMinute)      { m_minute = mMinute; }
+void   Point::setSecond(int mSecond)      { m_second = mSecond; }
+void   Point::setMs(int mMs)              { m__ms = mMs; }
 void   Point::setLong(long double mLong)  { m_long = mLong; }
 void   Point::setLat(long double mLat)    { m_lat = mLat; }
 void   Point::setF1(long double mF1)      { m_f1 = mF1; }

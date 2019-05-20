@@ -46,7 +46,7 @@ class Point
 
 
 
-private:
+    private:
 
         int m_hour;
         int m_minute;
