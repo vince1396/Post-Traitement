@@ -11,3 +11,4 @@
 
 void goToDataStart(std::ifstream& fileFlow, std::string& line);
 void excludeNullData(std::ifstream &fileFlow, std::string &line, std::vector<std::string> &lineTab);
+void createPointFromRaw(std::vector<std::string>& vector, std::vector<Point>& pointTab);

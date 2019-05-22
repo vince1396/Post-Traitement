@@ -27,9 +27,11 @@ int main() {
         View::successOpenFile(filePath);
 
         std::vector<std::string> optimizedData;
-        getOptimizedData(fileFlow, optimizedData);
+        std::vector<Point> storedPoints;
 
-        displayVector(optimizedData);
+        getOptimizedData(fileFlow, optimizedData);
+        createPointFromOD(&optimizedData, &storedPoints);
+        //displayVector(optimizedData);
 
         fileFlow.close();
         // =============================================================================================================
