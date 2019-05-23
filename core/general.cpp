@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <math.h>
 #include "../headers/general.h"
 #include "../headers/Point.h"
 
@@ -24,4 +25,10 @@ void displayAllPoints(std::vector<Point>& vector)
     {
         i.displayPoint();
     }
+}
+
+double calculDistance(double xA, double yA, double xB, double yB)
+{
+    double AB = sqrt(pow(xB - xA, 2)) + sqrt(pow(yB - yA, 2));
+    return AB;
 }

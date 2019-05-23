@@ -31,7 +31,7 @@ int main() {
 
         getOptimizedData(fileFlow, optimizedData);
         createPointFromOD(&optimizedData, &storedPoints);
-        //displayVector(optimizedData);
+        //displayAllPoints(storedPoints);
 
         fileFlow.close();
         // =============================================================================================================

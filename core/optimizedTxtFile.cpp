@@ -45,9 +45,8 @@ void createPointFromOD(std::vector<std::string> * vector, std::vector<Point> * s
 
         for(int j = 0; j < 3; j++)
         {
-            if(j == 2) {
+            if(j == 2)
                 tab[j] = string;
-            }
 
             if(j < 2)
             {
@@ -61,6 +60,6 @@ void createPointFromOD(std::vector<std::string> * vector, std::vector<Point> * s
         point.setLong(stod(tab[1]));
         point.setLat(stod(tab[2]));
 
-        point.displayPoint();
+        storedPoint->push_back(point);
     }
 }
