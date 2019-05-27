@@ -9,55 +9,52 @@
 // =====================================================================================================================
 // CONSTRUCTORS
 
-Point::Point() : m_hour(0), m_minute(0), m_second(0), m__ms(0), m_long(0.0), m_lat(0.0),m_f1(0.0), m_f2(0.0), m_f3(0.0),
-                 m_f4(0.0), m_f5(0.0), m_f6(0.0){}
+Point::Point() : mHour(0), mMinute(0), mSecond(0), mMs(0), mLong(0.0), mLat(0.0),mF1(0.0), mF2(0.0), mF3(0.0),
+                 mF4(0.0), mF5(0.0), mF6(0.0), mDistanceCumulee(0.0) {}
 
-Point::Point(int mHour, int mMinute, int mSecond, int mMs, double mLong, double mLat, double mF1,
-             double mF2, double mF3, double mF4, double mF5, double mF6) : m_hour(mHour),
-                                                               m_minute(mMinute), m_second(mSecond),
-                                                               m__ms(mMs), m_long(mLong), m_lat(mLat), m_f1(mF1),
-                                                               m_f2(mF2), m_f3(mF3), m_f4(mF4), m_f5(mF5), m_f6(mF6){}
+Point::Point(int hour, int minute, int second, int ms, double m_long, double lat, double f1,
+             double f2, double f3, double f4, double f5, double f6) : mHour(hour),
+                                                               mMinute(minute), mSecond(second),
+                                                               mMs(ms), mLong(m_long), mLat(lat), mF1(f1),
+                                                               mF2(f2), mF3(f3), mF4(f4), mF5(f5), mF6(f6){}
 
 // =====================================================================================================================
-// DESTRUCTORs
+// DESTRUCTORS
 
 Point::~Point() = default;
 // =====================================================================================================================
 
 // =====================================================================================================================
 // ========== GETTERS ==========
-
-int    Point::getHour()   const { return m_hour; }
-int    Point::getMinute() const { return m_minute; }
-int    Point::getSecond() const { return m_second; }
-int    Point::getMs()     const { return m__ms; }
-double Point::getLong()   const { return m_long; }
-double Point::getLat()    const { return m_lat; }
-double Point::getF1()     const { return m_f1; }
-double Point::getF2()     const { return m_f2; }
-double Point::getF3()     const { return m_f3; }
-double Point::getF4()     const { return m_f4; }
-double Point::getF5()     const { return m_f5; }
-double Point::getF6()     const { return m_f6; }
+int    Point::getHour()   const { return mHour; }
+int    Point::getMinute() const { return mMinute; }
+int    Point::getSecond() const { return mSecond; }
+int    Point::getMs()     const { return mMs; }
+double Point::getLong()   const { return mLong; }
+double Point::getLat()    const { return mLat; }
+double Point::getF1()     const { return mF1; }
+double Point::getF2()     const { return mF2; }
+double Point::getF3()     const { return mF3; }
+double Point::getF4()     const { return mF4; }
+double Point::getF5()     const { return mF5; }
+double Point::getF6()     const { return mF6; }
 // =====================================================================================================================
 
 // =====================================================================================================================
 // ========== SETTERS ==========
-
-void Point::setHour(int mHour)     { m_hour = mHour; }
-void Point::setMinute(int mMinute) { m_minute = mMinute; }
-void Point::setSecond(int mSecond) { m_second = mSecond; }
-void Point::setMs(int mMs)         { m__ms = mMs; }
-void Point::setLong(double mLong)  { m_long = mLong; }
-void Point::setLat(double mLat)    { m_lat = mLat; }
-void Point::setF1(double mF1)      { m_f1 = mF1; }
-void Point::setF2(double mF2)      { m_f2 = mF2; }
-void Point::setF3(double mF3)      { m_f3 = mF3; }
-void Point::setF4(double mF4)      { m_f4 = mF4; }
-void Point::setF5(double mF5)      { m_f5 = mF5; }
-void Point::setF6(double mF6)      { m_f6 = mF6; }
+void Point::setHour(int hour)      { mHour = hour; }
+void Point::setMinute(int minute)  { mMinute = minute; }
+void Point::setSecond(int second)  { mSecond = second; }
+void Point::setMs(int ms)          { mMs = ms; }
+void Point::setLong(double m_long) { mLong = m_long; }
+void Point::setLat(double lat)     { mLat = lat; }
+void Point::setF1(double f1)       { mF1 = f1; }
+void Point::setF2(double f2)       { mF2 = f2; }
+void Point::setF3(double f3)       { mF3 = f3; }
+void Point::setF4(double f4)       { mF4 = f4; }
+void Point::setF5(double f5)       { mF5 = f5; }
+void Point::setF6(double f6)       { mF6 = f6; }
 // =====================================================================================================================
-
 void Point::displayPoint()
 {
     std::cout << "Time : " << this->getHour();

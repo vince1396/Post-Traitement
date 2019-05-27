@@ -29,18 +29,18 @@ class Point
         double getF5() const;
         double getF6() const;
 
-        void   setHour(int mHour);
-        void   setMinute(int mMinute);
-        void   setSecond(int mSecond);
-        void   setMs(int mMs);
-        void   setLong(double mLong);
-        void   setLat(double mLat);
-        void   setF1(double mF1);
-        void   setF2(double mF2);
-        void   setF3(double mF3);
-        void   setF4(double mF4);
-        void   setF5(double mF5);
-        void   setF6(double mF6);
+        void setHour(int mHour);
+        void setMinute(int mMinute);
+        void setSecond(int mSecond);
+        void setMs(int mMs);
+        void setLong(double mLong);
+        void setLat(double mLat);
+        void setF1(double mF1);
+        void setF2(double mF2);
+        void setF3(double mF3);
+        void setF4(double mF4);
+        void setF5(double mF5);
+        void setF6(double mF6);
 
         void displayPoint();
 
@@ -48,19 +48,21 @@ class Point
 
     private:
 
-        int m_hour;
-        int m_minute;
-        int m_second;
-        int m__ms;
+        int mHour;
+        int mMinute;
+        int mSecond;
+        int mMs{};
 
-        double m_long;
-        double m_lat;
-        double m_f1;
-        double m_f2;
-        double m_f3;
-        double m_f4;
-        double m_f5;
-        double m_f6;
+        double mLong;
+        double mLat{};
+        double mF1{};
+        double mF2{};
+        double mF3{};
+        double mF4{};
+        double mF5{};
+        double mF6{};
+
+        double mDistanceCumulee{};
 };
 
 #endif //POST_TRAITEMENT_POINT_H
