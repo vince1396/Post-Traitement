@@ -9,6 +9,6 @@
 
 #endif //POST_TRAITEMENT_FUNCTIONS_H
 
-void displayVector(std::vector<std::string>& vector);
-void displayAllPoints(std::vector<Point>& vector);
+//void displayVector(std::vector<std::string>& vector);
+//void displayAllPoints(std::vector<Point>& vector);
 double calculDistance(double xA, double yA, double xB, double yB);

@@ -8,6 +8,7 @@
 #include "headers/Point.h"
 #include "headers/View.h"
 #include "headers/optimizedTxtFile.h"
+#include "model/ArrayPoint.h"
 
 int main() {
 
@@ -26,12 +27,12 @@ int main() {
         // =============================================================================================================
         View::successOpenFile(filePath);
 
-        std::vector<std::string> optimizedData;
-        std::vector<Point> storedPoints;
-
-        getOptimizedData(fileFlow, optimizedData);
-        createPointFromOD(&optimizedData, &storedPoints);
-        //displayAllPoints(storedPoints);
+        std::vector<std::string> optimizedData;       // Will contains each line of the optimized txt file
+        getOptimizedData(fileFlow, optimizedData);    // We store the lines on the container
+        ArrayPoint arrayPoint(optimizedData.size());  // Creation of the ArrayPoint
+        createPointFromOD(&optimizedData, arrayPoint);// Creation of the Points and inserting on the array
+        arrayPoint.makeDistanceCumulee();
+        arrayPoint.displayArray();                    // Displaying all the points
 
         fileFlow.close();
         // =============================================================================================================

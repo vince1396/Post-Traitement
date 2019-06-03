@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include "../headers/optimizedTxtFile.h"
+#include "../model/ArrayPoint.h"
 
 /*
  * This file contains methods that can be used on the second step of the
@@ -30,7 +31,7 @@ void getOptimizedData(std::ifstream &fileFlow, std::vector<std::string> &vector)
 /*
  * We transform each line of a vector in a Point object and store them in another vector
  */
-void createPointFromOD(std::vector<std::string> * vector, std::vector<Point> * storedPoint)
+void createPointFromOD(std::vector<std::string> * vector, ArrayPoint arrayPoint)
 {
     for(const auto & i : *vector)
     {
@@ -60,6 +61,6 @@ void createPointFromOD(std::vector<std::string> * vector, std::vector<Point> * s
         point.setLong(stod(tab[1]));
         point.setLat(stod(tab[2]));
 
-        storedPoint->push_back(point);
+        arrayPoint.insert(point);
     }
 }
