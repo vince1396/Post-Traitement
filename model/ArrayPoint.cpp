@@ -6,6 +6,7 @@
 #include "ArrayPoint.h"
 #include "../headers/general.h"
 
+// =====================================================================================================================
 ArrayPoint::ArrayPoint(int max) {
 
     this->mNbElem = 0;
@@ -13,11 +14,18 @@ ArrayPoint::ArrayPoint(int max) {
     this->ArrayPoint::mArray = new Point[max];
     this->ArrayPoint::mArray[0].setDistanceCumulee(0.0);
 }
-
+// =====================================================================================================================
 int ArrayPoint::getNbElem() const {
     return this->mNbElem;
 }
 
+Point ArrayPoint::getPoint(int i) {
+
+    Point point = mArray[i];
+    return point;
+}
+
+// =====================================================================================================================
 void ArrayPoint::insert(const Point &point) {
 
     mArray[this->mNbElem] = point;
@@ -26,14 +34,12 @@ void ArrayPoint::insert(const Point &point) {
 
 void ArrayPoint::displayArray() {
 
-    for(int i = 0; i < 500; i++)
+    for(int i = 0; i < this->mMax; i++)
     {
         this->mArray[i].displayPoint();
     }
 }
 
-// WRONG !!!
-// TODO :: Refaire la fonction avec les bonnes distances
 void ArrayPoint::makeDistanceCumulee() {
 
     for(int i = 0; i < this->mMax; i++)
@@ -43,7 +49,7 @@ void ArrayPoint::makeDistanceCumulee() {
         double xB = this->mArray[i+1].getLong();
         double yB = this->mArray[i+1].getLat();
         double distance = calculDistance(xA, yA, xB, yB);
-        double dc = distance + this->mArray[i].getMDistanceCumulee();
+        double dc = distance + this->mArray[i].getDistanceCumulee();
         this->mArray[i+1].setDistanceCumulee(dc);
     }
 }

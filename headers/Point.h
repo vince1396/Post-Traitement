@@ -43,27 +43,27 @@ public:
     void setF6(double mF6);
     // =================================================================================================================
     void displayPoint();
-    double getMDistanceCumulee() const;
+    double getDistanceCumulee() const;
     void setDistanceCumulee(double mDistanceCumulee);
-
+    double getDistanceMetre();
 // =====================================================================================================================
 private:
 
-        int mHour;
-        int mMinute;
-        int mSecond;
-        int mMs;
+    int mHour;
+    int mMinute;
+    int mSecond;
+    int mMs;
 
-        double mLong;
-        double mLat;
-        double mF1;
-        double mF2;
-        double mF3;
-        double mF4;
-        double mF5;
-        double mF6;
+    double mLong;
+    double mLat;
+    double mF1;
+    double mF2;
+    double mF3;
+    double mF4;
+    double mF5;
+    double mF6;
 
-        double mDistanceCumulee;
+    double mDistanceCumulee;
 };
 
 #endif //POST_TRAITEMENT_POINT_H

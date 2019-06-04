@@ -11,9 +11,13 @@ class ArrayPoint {
 
 public:
 
+    // =================================================================================================================
     explicit ArrayPoint(int max);
+    // =================================================================================================================
+    int getNbElem() const;
+    Point getPoint(int indice);
+    // =================================================================================================================
     void insert(const Point& point);
-
     void displayArray();
     void makeDistanceCumulee();
 
@@ -22,8 +26,6 @@ private:
     int mMax;
     int mNbElem;
     Point *mArray;
-
-    int getNbElem() const;
 };
 
 #endif //POST_TRAITEMENT_ARRAYPOINT_H

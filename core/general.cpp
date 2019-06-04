@@ -11,6 +11,12 @@
 
 const double pi = 3.14159265358979323846;
 const double rayonTerre = 6356.7523;
+const double lambda800  = 3.75; // Mètres
+const double lambda900  = 3.33; // Mètres
+const double lambda1800 = 1.67; // Mètres
+const double lambda2100 = 1.43; // Mètres
+const double lambda2300 = 1.30; // Mètres
+const double lambda2600 = 1.12; // Mètres
 
 // Display all data in a vector
 /*void displayVector(std::vector<std::string>& vector)
@@ -32,6 +38,11 @@ const double rayonTerre = 6356.7523;
 
 double calculDistance(double xA, double yA, double xB, double yB)
 {
+    xA = convertDegreesToRadians(xA);
+    xB = convertDegreesToRadians(xB);
+    yA = convertDegreesToRadians(yA);
+    yB = convertDegreesToRadians(yB);
+
     double deltaPhi = yB - yA;
     double deltaLambda = xB - xA;
 
@@ -51,4 +62,29 @@ double convertDegreesToRadians(double degrees)
     double radians = degrees * pi/180;
 
     return radians;
+}
+
+void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
+{
+    double limit = lambda800;
+    std::vector<Point> tempPoint;
+
+    for(int i = 0; i < arrayPoint->getNbElem(); i++)
+    {
+        if(arrayPoint->getPoint(i).getDistanceCumulee() >= limit)
+        {
+            ArrayPoint grappe(tempPoint.size());
+            for(const auto & j : tempPoint)
+            {
+                grappe.insert(j);
+            }
+            vector->push_back(grappe);
+            tempPoint.clear();
+            limit += lambda800;
+        }
+        else
+        {
+            tempPoint.push_back(arrayPoint->getPoint(i));
+        }
+    }
 }

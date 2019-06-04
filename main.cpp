@@ -29,10 +29,13 @@ int main() {
 
         std::vector<std::string> optimizedData;       // Will contains each line of the optimized txt file
         getOptimizedData(fileFlow, optimizedData);    // We store the lines on the container
+
         ArrayPoint arrayPoint(optimizedData.size());  // Creation of the ArrayPoint
         createPointFromOD(&optimizedData, arrayPoint);// Creation of the Points and inserting on the array
         arrayPoint.makeDistanceCumulee();
         arrayPoint.displayArray();                    // Displaying all the points
+
+        std::vector<ArrayPoint> arrayPointContainer;
 
         fileFlow.close();
         // =============================================================================================================

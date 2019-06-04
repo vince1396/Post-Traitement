@@ -59,7 +59,7 @@ double Point::getF3()     const { return mF3; }
 double Point::getF4()     const { return mF4; }
 double Point::getF5()     const { return mF5; }
 double Point::getF6()     const { return mF6; }
-double Point::getMDistanceCumulee() const { return mDistanceCumulee; }
+double Point::getDistanceCumulee() const { return mDistanceCumulee; }
 // =====================================================================================================================
 
 // =====================================================================================================================
@@ -80,7 +80,6 @@ void Point::setF6(double f6)       { Point::mF6 = f6; }
 void Point::setDistanceCumulee(double distanceCumulee) {
     Point::mDistanceCumulee = distanceCumulee;
 }
-
 // =====================================================================================================================
 void Point::displayPoint()
 {
@@ -88,13 +87,17 @@ void Point::displayPoint()
     std::cout << ":" << this->getMinute();
     std::cout << ":" << this->getSecond();
     std::cout << "." << this->getMs() << std::endl;
-    std::cout << std::setprecision(9) << "Long : " << this->getLong() << std::endl;
-    std::cout << std::setprecision(9) << "Lat : "  << this->getLat() << std::endl;
-    std::cout << "F1 : " << this->getF1() << std::endl;
+    std::cout << std::setprecision(7) << "Long : " << this->getLong() << std::endl;
+    std::cout << std::setprecision(7) << "Lat : "  << this->getLat() << std::endl;
+    std::cout << std::setprecision(7) << "F1 : " << this->getF1() << std::endl;
     std::cout << "F2 : " << this->getF2() << std::endl;
     std::cout << "F3 : " << this->getF3() << std::endl;
     std::cout << "F4 : " << this->getF4() << std::endl;
     std::cout << "F5 : " << this->getF5() << std::endl;
     std::cout << "F6 : " << this->getF6() << std::endl;
-    std::cout << std::fixed << std::setprecision(7) << "Distance cumulee : " << this->getMDistanceCumulee() << "\n" << std::endl;
+    std::cout << std::fixed << std::setprecision(7) << "Distance cumulee : " << this->getDistanceMetre() << "\n" << std::endl;
+}
+double Point::getDistanceMetre() {
+
+    return this->getDistanceCumulee() * 1000;
 }
