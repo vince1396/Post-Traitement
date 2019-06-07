@@ -18,24 +18,6 @@ const double lambda2100 = 1.43; // Mètres
 const double lambda2300 = 1.30; // Mètres
 const double lambda2600 = 1.12; // Mètres
 
-// Display all data in a vector
-/*void displayVector(std::vector<std::string>& vector)
-{
-    for(const auto & i : vector)
-    {
-        std::cout << i << std::endl;
-    }
-}*/
-
-// Calls Point::displayPoints methods on each Point object contained in a vector
-/*void displayAllPoints(std::vector<Point>& vector)
-{
-    for(auto & i : vector)
-    {
-        i.displayPoint();
-    }
-}*/
-
 double calculDistance(double xA, double yA, double xB, double yB)
 {
     xA = convertDegreesToRadians(xA);
@@ -59,7 +41,7 @@ double calculDistance(double xA, double yA, double xB, double yB)
 
 double convertDegreesToRadians(double degrees)
 {
-    double radians = degrees * pi/180;
+    double radians = degrees * (pi/180);
 
     return radians;
 }
@@ -69,9 +51,13 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
     double limit = lambda800;
     std::vector<Point> tempPoint;
 
-    for(int i = 0; i < arrayPoint->getNbElem(); i++)
+    for(int i = 0; i < arrayPoint->getMax(); i++)
     {
-        if(arrayPoint->getPoint(i).getDistanceCumulee() >= limit)
+        /*std::cout << arrayPoint->getMax() << std::endl;
+        std::cout << limit << std::endl;
+        std::cout << tempPoint.size() << std::endl;
+        std::cout << arrayPoint->getPoint(i).getDistanceMetre() << "\n" << std::endl;*/
+        if(arrayPoint->getPoint(i).getDistanceMetre() >= limit || i == arrayPoint->getMax())
         {
             ArrayPoint grappe(tempPoint.size());
             for(const auto & j : tempPoint)
@@ -80,11 +66,21 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
             }
             vector->push_back(grappe);
             tempPoint.clear();
+            tempPoint.resize(0);
+            tempPoint.push_back(arrayPoint->getPoint(i));
             limit += lambda800;
         }
         else
         {
             tempPoint.push_back(arrayPoint->getPoint(i));
         }
+    }
+}
+
+void displayLambdas(std::vector<ArrayPoint> *vector)
+{
+    for(auto & i : *vector)
+    {
+        i.getPoint(0).displayPoint();
     }
 }

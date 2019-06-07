@@ -25,10 +25,14 @@ Point ArrayPoint::getPoint(int i) {
     return point;
 }
 
+int ArrayPoint::getMax() {
+
+    return this->mMax;
+}
 // =====================================================================================================================
 void ArrayPoint::insert(const Point &point) {
 
-    mArray[this->mNbElem] = point;
+    this->mArray[this->mNbElem] = point;
     this->mNbElem++;
 }
 
