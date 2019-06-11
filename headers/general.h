@@ -13,7 +13,7 @@
 
 //void displayVector(std::vector<std::string>& vector);
 //void displayAllPoints(std::vector<Point>& vector);
-double calculDistance(double xA, double yA, double xB, double yB);
+double calculDistance(double long1, double lat1, double long2, double lat2);
 double convertDegreesToRadians(double degrees);
 void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector);
 void displayLambdas(std::vector<ArrayPoint> *vector);

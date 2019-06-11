@@ -9,7 +9,7 @@
 #include "../headers/general.h"
 #include "../headers/Point.h"
 
-const double pi = 3.14159265358979323846;
+const double pi = 4.0*atan(1.0);
 const double rayonTerre = 6356.7523;
 const double lambda800  = 3.75; // Mètres
 const double lambda900  = 3.33; // Mètres
@@ -18,30 +18,31 @@ const double lambda2100 = 1.43; // Mètres
 const double lambda2300 = 1.30; // Mètres
 const double lambda2600 = 1.12; // Mètres
 
-double calculDistance(double xA, double yA, double xB, double yB)
+double calculDistance(double long1, double lat1, double long2, double lat2)
 {
-    xA = convertDegreesToRadians(xA);
-    xB = convertDegreesToRadians(xB);
-    yA = convertDegreesToRadians(yA);
-    yB = convertDegreesToRadians(yB);
+    double dLong1 = convertDegreesToRadians(long1);
+    double dLong2 = convertDegreesToRadians(long2);
+    double dLat1 =  convertDegreesToRadians(lat1);
+    double dLat2 =  convertDegreesToRadians(lat2);
 
-    double deltaPhi = yB - yA;
-    double deltaLambda = xB - xA;
+    double dLat = (dLat2) - (dLat1);
+    double dLong = (dLong2) - (dLong1);
 
-    double a = sin(deltaPhi/2) * sin(deltaPhi/2)
-               + cos(xA) * cos(xB)
-               * sin(deltaLambda/2) * sin(deltaLambda/2);
+    double a = pow(sin((dLat)/2.0),2.0)
+               + pow(sin((dLong)/2.0),2.0)
+               * cos((dLat1))
+               * cos((dLat2));
 
-    double c = 2 * atan2(sqrt(a), sqrt(1-a));
+    double c = 2.0 * asin(sqrt((a)));
 
-    double d = rayonTerre * c;
+    double d = rayonTerre * (c);
 
     return d;
 }
 
 double convertDegreesToRadians(double degrees)
 {
-    double radians = degrees * (pi/180);
+    double radians = (degrees) * (M_PI/180);
 
     return radians;
 }
@@ -53,10 +54,6 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
 
     for(int i = 0; i < arrayPoint->getMax(); i++)
     {
-        /*std::cout << arrayPoint->getMax() << std::endl;
-        std::cout << limit << std::endl;
-        std::cout << tempPoint.size() << std::endl;
-        std::cout << arrayPoint->getPoint(i).getDistanceMetre() << "\n" << std::endl;*/
         if(arrayPoint->getPoint(i).getDistanceMetre() >= limit || i == arrayPoint->getMax())
         {
             ArrayPoint grappe(tempPoint.size());
@@ -79,8 +76,11 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
 
 void displayLambdas(std::vector<ArrayPoint> *vector)
 {
+    int j = 1;
     for(auto & i : *vector)
     {
+        std::cout << j << std::endl;
         i.getPoint(0).displayPoint();
+        j++;
     }
 }

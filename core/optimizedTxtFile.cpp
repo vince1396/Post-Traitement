@@ -31,7 +31,7 @@ void getOptimizedData(std::ifstream &fileFlow, std::vector<std::string> &vector)
 /*
  * We transform each line of a vector in a Point object and store them in another vector
  */
-void createPointFromOD(std::vector<std::string> * vector, ArrayPoint arrayPoint)
+void createPointFromOD(std::vector<std::string> * vector, ArrayPoint *arrayPoint)
 {
     for(const auto & i : *vector)
     {
@@ -58,9 +58,9 @@ void createPointFromOD(std::vector<std::string> * vector, ArrayPoint arrayPoint)
         }
 
         point.setF1(stod(tab[0]));
-        point.setLong(stod(tab[1]));
-        point.setLat(stod(tab[2]));
+        point.setLat(stod(tab[1]));
+        point.setLong(stod(tab[2]));
 
-        arrayPoint.insert(point);
+        arrayPoint->insert(point);
     }
 }

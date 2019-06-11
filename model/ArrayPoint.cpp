@@ -53,7 +53,8 @@ void ArrayPoint::makeDistanceCumulee() {
         double xB = this->mArray[i+1].getLong();
         double yB = this->mArray[i+1].getLat();
         double distance = calculDistance(xA, yA, xB, yB);
-        double dc = distance + this->mArray[i].getDistanceCumulee();
+        double dc = (distance) + this->mArray[i].getDistanceCumulee();
         this->mArray[i+1].setDistanceCumulee(dc);
     }
 }
+
