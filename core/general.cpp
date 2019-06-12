@@ -84,3 +84,11 @@ void displayLambdas(std::vector<ArrayPoint> *vector)
         j++;
     }
 }
+
+void medianeFromLambdas(std::vector<ArrayPoint> *vector) {
+
+    for(const auto & i : *vector)
+    {
+
+    }
+}

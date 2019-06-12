@@ -34,6 +34,7 @@ private:
     int mMax;
     int mNbElem;
     Point *mArray;
+    double mRssi;
 };
 
 #endif //POST_TRAITEMENT_ARRAYPOINT_H

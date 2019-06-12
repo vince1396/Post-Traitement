@@ -13,6 +13,7 @@ ArrayPoint::ArrayPoint(int max) {
     this->ArrayPoint::mMax = max;
     this->ArrayPoint::mArray = new Point[max];
     this->ArrayPoint::mArray[0].setDistanceCumulee(0.0);
+    this->ArrayPoint::mRssi = 0.0;
 }
 // =====================================================================================================================
 int ArrayPoint::getNbElem() const {

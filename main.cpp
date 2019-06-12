@@ -12,6 +12,11 @@
 
 int main() {
 
+    float time;
+    clock_t t1, t2;
+
+    t1 = clock();
+
     // ===================== VIEW ======================
     View::displayScriptStart();
     // =================================================
@@ -38,6 +43,7 @@ int main() {
 
         lambdasCreation(&arrayPoint, &lambdasContainer); // Making lambdas groups, depending on the frequency
         displayLambdas(&lambdasContainer);
+        arrayPoint.quickSort();
         //arrayPoint.displayArray();
 
         fileFlow.close();
@@ -48,6 +54,11 @@ int main() {
         // Display error message
         View::errorOpenFile(filePath);
     }
+
+    t2 = clock();
+    time = (float) (t2-t1) / CLOCKS_PER_SEC;
+
+    std::cout << "\n\nExec : " << time << std::endl;
 
     return 0;
 }

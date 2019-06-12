@@ -17,3 +17,4 @@ double calculDistance(double long1, double lat1, double long2, double lat2);
 double convertDegreesToRadians(double degrees);
 void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector);
 void displayLambdas(std::vector<ArrayPoint> *vector);
+void medianeFromLambdas(std::vector<ArrayPoint> *vector);
