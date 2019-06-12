@@ -116,8 +116,9 @@ int ArrayPoint::partitionIt(int left, int right, double pivot) {
             break;
         else
             swap(leftPtr, rightPtr);
-        return leftPtr;
     }
+    swap(leftPtr, rightPtr-1);
+    return leftPtr;
 }
 
 void ArrayPoint::insertionSort(int left, int right) {
