@@ -21,6 +21,13 @@ public:
     void insert(const Point& point);
     void displayArray();
     void makeDistanceCumulee();
+    // =================================================================================================================
+    void quickSort();
+    void recQuickSort(int left, int right);
+    double medianOf3(int left, int right);
+    void swap(int dex1, int dex2);
+    int partitionIt(int left, int right, double pivot);
+    void insertionSort(int left, int right);
 
 private:
 
