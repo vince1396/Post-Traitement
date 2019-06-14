@@ -87,8 +87,13 @@ void displayLambdas(std::vector<ArrayPoint> *vector)
 
 void medianeFromLambdas(std::vector<ArrayPoint> *vector) {
 
-    for(const auto & i : *vector)
+    unsigned int tempSize = 0;
+    for(int i = 0; i < vector->size(); i + 4)
     {
-
+        for(int j = 0;  j < 3; j++)
+        {
+            tempSize += vector->at(i + j).getMax();
+        }
+        ArrayPoint arrayPoint(tempSize);
     }
 }
