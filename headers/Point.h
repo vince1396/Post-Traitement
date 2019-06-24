@@ -13,7 +13,7 @@ class Point {
 public:
 
     Point();
-    Point(int hour, int minute, int second, int ms, double mLong, double lat, double f1, double f2, double f3, double f4, double f5, double f6);
+    Point(int hour, int minute, int second, int ms, double mLong, double lat, double f1, double f2, double f3, double f4, double f5, double f6, double rssi);
     ~Point();
 
     int    getHour() const;
@@ -64,6 +64,7 @@ private:
     double mF6;
 
     double mDistanceCumulee;
+    double mRssi;
 };
 
 #endif //POST_TRAITEMENT_POINT_H

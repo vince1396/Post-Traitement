@@ -13,8 +13,9 @@ ArrayPoint::ArrayPoint(int max) {
     this->ArrayPoint::mMax = max;
     this->ArrayPoint::mArray = new Point[max];
     this->ArrayPoint::mArray[0].setDistanceCumulee(0.0);
-    this->ArrayPoint::mRssi = 0.0;
 }
+
+ArrayPoint::~ArrayPoint() = default;
 // =====================================================================================================================
 int ArrayPoint::getNbElem() const {
     return this->mNbElem;
@@ -58,6 +59,15 @@ void ArrayPoint::makeDistanceCumulee() {
         this->mArray[i+1].setDistanceCumulee(dc);
     }
 }
+
+Point ArrayPoint::calculMediane() {
+
+    int middle = this->getNbElem()/2;
+    Point mediane = getPoint(middle);
+
+    return mediane;
+}
+
 // =====================================================================================================================
 void ArrayPoint::quickSort() {
 

@@ -11,7 +11,7 @@
 // =====================================================================================================================
 // CONSTRUCTORS
 Point::Point() : mHour(0), mMinute(0), mSecond(0), mMs(0), mLong(0.0), mLat(0.0),mF1(0.0), mF2(0.0), mF3(0.0),
-                 mF4(0.0), mF5(0.0), mF6(0.0), mDistanceCumulee(0.0) {}
+                 mF4(0.0), mF5(0.0), mF6(0.0), mDistanceCumulee(0.0), mRssi(0.0) {}
 
 Point::Point(int hour,
              int minute,
@@ -24,7 +24,8 @@ Point::Point(int hour,
              double f3,
              double f4,
              double f5,
-             double f6) :
+             double f6,
+             double rssi) :
              mHour(hour),
              mMinute(minute),
              mSecond(second),
@@ -37,7 +38,8 @@ Point::Point(int hour,
              mF4(f4),
              mF5(f5),
              mF6(f6),
-             mDistanceCumulee(0){}
+             mDistanceCumulee(0),
+             mRssi(rssi){}
 
 // =====================================================================================================================
 // DESTRUCTORS
@@ -88,8 +90,8 @@ void Point::displayPoint()
     std::cout << ":" << this->getSecond();
     std::cout << "." << this->getMs() << std::endl;
     std::cout << std::setprecision(7) << "Long : " << this->getLong() << std::endl;
-    std::cout << std::setprecision(7) << "Lat : "  << this->getLat() << std::endl;
-    std::cout << std::setprecision(7) << "F1 : " << this->getF1() << std::endl;
+    std::cout << std::setprecision(7) << "Lat : "  << this->getLat()  << std::endl;
+    std::cout << std::setprecision(7) << "F1 : "   << this->getF1()   << std::endl;
     std::cout << "F2 : " << this->getF2() << std::endl;
     std::cout << "F3 : " << this->getF3() << std::endl;
     std::cout << "F4 : " << this->getF4() << std::endl;

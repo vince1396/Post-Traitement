@@ -5,6 +5,7 @@
 #ifndef POST_TRAITEMENT_ARRAYPOINT_H
 #define POST_TRAITEMENT_ARRAYPOINT_H
 
+#include <vector>
 #include "../headers/Point.h"
 
 class ArrayPoint {
@@ -13,6 +14,7 @@ public:
 
     // =================================================================================================================
     explicit ArrayPoint(int max);
+    virtual ~ArrayPoint();
     // =================================================================================================================
     int getNbElem() const;
     Point getPoint(int indice);
@@ -21,6 +23,7 @@ public:
     void insert(const Point& point);
     void displayArray();
     void makeDistanceCumulee();
+    Point calculMediane();
     // =================================================================================================================
     void quickSort();
     void recQuickSort(int left, int right);
@@ -34,7 +37,6 @@ private:
     int mMax;
     int mNbElem;
     Point *mArray;
-    double mRssi;
 };
 
 #endif //POST_TRAITEMENT_ARRAYPOINT_H
