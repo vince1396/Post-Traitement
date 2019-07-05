@@ -46,7 +46,7 @@ int main() {
 
         // =============================================================================================================
         std::string const path("/home/vincent/CLionProjects/Post-Traitement/mesures/result");
-        std::ofstream writting(path, std::ios::out | std::ios::app);
+        std::ofstream writting(path, std::ios::out | std::ios::trunc);
 
         if(writting)
         {

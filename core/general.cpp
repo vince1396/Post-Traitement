@@ -128,12 +128,6 @@ void makeMediane(std::vector<ArrayPoint> *lambdasContainer, std::vector<Point> *
         }
 
         temp1.quickSort();
-        std::vector<Point> test;
-        test.reserve(temp1.getNbElem());
-        for (int l = 0; l < temp1.getNbElem(); ++l)
-        {
-            test.push_back(temp1.getPoint(l));
-        }
 
         double rssi = temp1.calculMediane().getF1();
         Point pointMedian(hour, minute, second, 0, lon, lat, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, rssi);
