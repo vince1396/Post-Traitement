@@ -28,6 +28,7 @@ public:
     double getF4() const;
     double getF5() const;
     double getF6() const;
+    double getRssi() const;
     // =================================================================================================================
     void setHour(int mHour);
     void setMinute(int mMinute);
@@ -41,6 +42,7 @@ public:
     void setF4(double mF4);
     void setF5(double mF5);
     void setF6(double mF6);
+    void setRssi(double mRssi);
     // =================================================================================================================
     void displayPoint();
     double getDistanceCumulee() const;

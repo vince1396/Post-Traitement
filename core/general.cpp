@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <math.h>
+#include <iomanip>
 #include "../headers/general.h"
 #include "../headers/Point.h"
 
@@ -52,11 +53,11 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector)
     double limit = lambda800;
     std::vector<Point> tempPoint;
 
-    for(int i = 0; i < arrayPoint->getMax(); i++)
+    for(int i = 0; i < arrayPoint->getNbElem(); i++)
     {
-        if(arrayPoint->getPoint(i).getDistanceMetre() >= limit || i > arrayPoint->getMax())
+        if(arrayPoint->getPoint(i).getDistanceMetre() > limit || i >= arrayPoint->getNbElem())
         {
-            ArrayPoint grappe(tempPoint.size());
+            ArrayPoint grappe(static_cast<int>(tempPoint.size()));
             for(const auto & j : tempPoint)
             {
                 grappe.insert(j);
@@ -85,40 +86,58 @@ void displayLambdas(std::vector<ArrayPoint> *vector)
     }
 }
 
-void getLambdasByFour(std::vector<ArrayPoint> *lambdasContainer, std::vector<ArrayPoint> *fourLambdas) {
+void displayVectorPoint(std::vector<Point> *vector) {
 
-    int controller = 0;
-    std::vector<Point> temp;
-    for(auto & i : *lambdasContainer)
+    for(auto &i : *vector)
     {
-        if(controller == 3)
-        {
-            ArrayPoint arrayPoint(temp.size());
-            for(const auto & k : temp)
-            {
-                arrayPoint.insert(k);
-            }
-            fourLambdas->push_back(arrayPoint);
-
-            controller = 0;
-            temp.clear();
-        }
-        else
-        {
-            for(int j = 0; j < i.getNbElem(); j++)
-            {
-                temp.push_back(i.getPoint(j));
-            }
-            controller++;
-        }
+        i.displayPoint();
     }
 }
 
-void makeMediane(std::vector<ArrayPoint> *fourLambdas, ArrayPoint *arrayMediane) {
+void makeMediane(std::vector<ArrayPoint> *lambdasContainer, std::vector<Point> *arrayMediane) {
 
-    for(auto & i : *fourLambdas)
+    for(int i = 1; i < lambdasContainer->size()-2; i++)
     {
-        i.quickSort();
-        arrayMediane->insert(i.calculMediane());
+        std::vector<ArrayPoint> fourLambdas;
+        int size = 0;
+
+        fourLambdas.push_back(lambdasContainer->at(i-1));
+        fourLambdas.push_back(lambdasContainer->at(i));
+        fourLambdas.push_back(lambdasContainer->at(i+1));
+        fourLambdas.push_back(lambdasContainer->at(i+2));
+
+        for(auto & x : fourLambdas)
+        {
+            size += x.getNbElem();
+        }
+
+        int hour   = fourLambdas.at(2).getPoint(0).getHour();
+        int minute = fourLambdas.at(2).getPoint(0).getMinute();
+        int second = fourLambdas.at(2).getPoint(0).getSecond();
+        double lon = fourLambdas.at(2).getPoint(0).getLong();
+        double lat = fourLambdas.at(2).getPoint(0).getLat();
+
+        ArrayPoint temp1(size);
+
+        for (auto &j : fourLambdas)
+        {
+            for(int k = 0; k < j.getNbElem(); k++)
+            {
+                temp1.insert(j.getPoint(k));
+            }
+        }
+
+        temp1.quickSort();
+        std::vector<Point> test;
+        test.reserve(temp1.getNbElem());
+        for (int l = 0; l < temp1.getNbElem(); ++l)
+        {
+            test.push_back(temp1.getPoint(l));
+        }
+
+        double rssi = temp1.calculMediane().getF1();
+        Point pointMedian(hour, minute, second, 0, lon, lat, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, rssi);
+        arrayMediane->push_back(pointMedian);
+        fourLambdas.clear();
     }
 }

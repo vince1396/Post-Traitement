@@ -22,7 +22,7 @@ int main() {
     // =================================================
 
     // Absolute path of the file to process
-    std::string const filePath("/home/vincent/CLionProjects/Post-Traitement/mesures/site2.txt");
+    std::string const filePath("/home/vincent/CLionProjects/Post-Traitement/mesures/test.txt");
     std::ifstream fileFlow(filePath, std::ios::in);
 
     // If file opening went well
@@ -33,21 +33,18 @@ int main() {
 
         std::vector<std::string> optimizedData;          // Will contains each line of the optimized txt file
         std::vector<ArrayPoint> lambdasContainer;        // Will store ArrayPoint after making lambdas
-        std::vector<ArrayPoint> fourLambdas;
+        std::vector<Point> arrayMediane;
 
         getOptimizedData(fileFlow, optimizedData);       // We store the lines in the container
-        ArrayPoint arrayPoint(optimizedData.size());     // Creation of the ArrayPoint containing all the points from the file
+        ArrayPoint arrayPoint(static_cast<int>(optimizedData.size()));     // Creation of the ArrayPoint containing all the points from the file
 
         createPointFromOD(&optimizedData, &arrayPoint);  // Creation of the Points and inserting on the array
         arrayPoint.makeDistanceCumulee();                // Cumulated distance calcul for each point
 
         lambdasCreation(&arrayPoint, &lambdasContainer); // Making lambdas groups, depending on the frequency
-        getLambdasByFour(&lambdasContainer, &fourLambdas);
+        makeMediane(&lambdasContainer, &arrayMediane);
 
-        ArrayPoint arrayMediane(fourLambdas.size());
-        makeMediane(&fourLambdas, &arrayMediane);
-        //arrayMediane.displayArray();
-
+        // =============================================================================================================
         std::string const path("/home/vincent/CLionProjects/Post-Traitement/mesures/result");
         std::ofstream writting(path, std::ios::out | std::ios::app);
 
@@ -55,27 +52,30 @@ int main() {
         {
             std::cout << "Starting writting..." << std::endl;
 
-            for(int i = 0; i < arrayMediane.getNbElem(); i++)
+            writting << "Time \t   "
+                     << "RSSI \t"
+                     << "Long \t "
+                     << "Lat \n\n";
+
+            for(auto & i : arrayMediane)
             {
                 writting
-                << "\t Time \t"
-                << "RSSI \t"
-                << "Long \t"
-                << "Lat \n\n"
-                << i
-                << " -| "
-                << "\t"
-                << arrayMediane.getPoint(i).getHour()
+                << "\""
+                << i.getHour()
                 << ":"
-                << arrayMediane.getPoint(i).getMinute()
+                << i.getMinute()
                 << ":"
-                << arrayMediane.getPoint(i).getSecond()
-                << "\t"
-                << arrayMediane.getPoint(i).getF1()
-                << "\t"
-                << arrayMediane.getPoint(i).getLong()
-                << "\t"
-                << arrayMediane.getPoint(i).getLat()
+                << i.getSecond()
+                << "\""
+                << "; "
+                <<  std::setprecision(7)
+                << i.getRssi()
+                << "; "
+                <<  std::setprecision(9)
+                << i.getLong()
+                << "; "
+                <<  std::setprecision(9)
+                << i.getLat()
                 << "\n";
             }
             writting.close();
@@ -97,7 +97,7 @@ int main() {
     t2 = clock();
     time = (float) (t2-t1) / CLOCKS_PER_SEC;
 
-    std::cout << "\n\nExec : " << time << std::endl;
+    std::cout << "\n\nExec : " << time << "s" << std::endl;
 
     return 0;
 }

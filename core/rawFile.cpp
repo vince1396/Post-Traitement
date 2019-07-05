@@ -69,7 +69,7 @@ void createPointFromRaw(std::vector<std::string>& vector, std::vector<Point>& po
             if(j == 2)
                 separator = ".";
 
-            cursor2 = string.find(separator, cursor);
+            cursor2 = static_cast<int>(string.find(separator, cursor));
             rawData[j] = string.substr(0, cursor2);
             string = string.substr(cursor2+1);
         }

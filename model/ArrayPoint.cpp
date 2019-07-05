@@ -12,7 +12,6 @@ ArrayPoint::ArrayPoint(int max) {
     this->mNbElem = 0;
     this->ArrayPoint::mMax = max;
     this->ArrayPoint::mArray = new Point[max];
-    this->ArrayPoint::mArray[0].setDistanceCumulee(0.0);
 }
 
 ArrayPoint::~ArrayPoint() = default;
@@ -42,6 +41,7 @@ void ArrayPoint::displayArray() {
 
     for(int i = 0; i < this->mMax; i++)
     {
+        std::cout << i << std::endl;
         this->mArray[i].displayPoint();
     }
 }
@@ -63,22 +63,23 @@ void ArrayPoint::makeDistanceCumulee() {
 Point ArrayPoint::calculMediane() {
 
     int middle = this->getNbElem()/2;
-    Point mediane = getPoint(middle);
+    Point mediane = this->getPoint(middle);
 
     return mediane;
 }
-
 // =====================================================================================================================
 void ArrayPoint::quickSort() {
 
-    recQuickSort(0, mMax);
+    recQuickSort(0, this->mNbElem-1);
 }
 
 void ArrayPoint::recQuickSort(int left, int right) {
 
-    int size = right-left+1;
-    if(size < 10)
+    int size1 = right-left+1;
+    if(size1 < 10)
+    {
         insertionSort(left, right);
+    }
     else
     {
         double median = medianOf3(left, right);
@@ -92,24 +93,24 @@ double ArrayPoint::medianOf3(int left, int right) {
 
     int center = (left+right)/2;
 
-    if(mArray[left].getF1() > mArray[center].getF1())
+    if(this->mArray[left].getF1() > this->mArray[center].getF1())
         swap(left, center);
 
-    if(mArray[left].getF1() > mArray[right].getF1())
+    if(this->mArray[left].getF1() > this->mArray[right].getF1())
         swap(left, right);
 
-    if(mArray[center].getF1() > mArray[right].getF1())
+    if(this->mArray[center].getF1() > this->mArray[right].getF1())
         swap(center, right);
 
     swap(center, right-1);
-    return mArray[right-1].getF1();
+    return this->mArray[right-1].getF1();
 }
 
 void ArrayPoint::swap(int dex1, int dex2) {
 
-    Point temp = mArray[dex1];
-    mArray[dex1] = mArray[dex2];
-    mArray[dex2] = temp;
+    Point temp = this->mArray[dex1];
+    this->mArray[dex1] = this->mArray[dex2];
+    this->mArray[dex2] = temp;
 }
 
 int ArrayPoint::partitionIt(int left, int right, double pivot) {
@@ -119,9 +120,9 @@ int ArrayPoint::partitionIt(int left, int right, double pivot) {
 
     while(true)
     {
-        while (mArray[++leftPtr].getF1() < pivot)
+        while (this->mArray[++leftPtr].getF1() < pivot)
             ;
-        while (mArray[--rightPtr].getF1() > pivot)
+        while (this->mArray[--rightPtr].getF1() > pivot)
             ;
         if(leftPtr >= rightPtr)
             break;
@@ -138,15 +139,16 @@ void ArrayPoint::insertionSort(int left, int right) {
 
     for(out = left+1; out <= right; out++)
     {
-        Point temp = mArray[out];
+        Point temp = this->mArray[out];
         in = out;
 
-        while(in > left && mArray[in-1].getF1() >= temp.getF1())
+        while(in > left && this->mArray[in-1].getF1() >= temp.getF1())
         {
-            mArray[in] = mArray[in-1];
+            this->mArray[in] = this->mArray[in-1];
             --in;
         }
 
-        mArray[in] = temp;
+        this->mArray[in] = temp;
     }
 }
+// =====================================================================================================================

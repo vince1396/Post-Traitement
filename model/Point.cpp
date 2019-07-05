@@ -62,8 +62,9 @@ double Point::getF4()     const { return mF4; }
 double Point::getF5()     const { return mF5; }
 double Point::getF6()     const { return mF6; }
 double Point::getDistanceCumulee() const { return mDistanceCumulee; }
+double Point::getRssi() const { return mRssi; }
+double Point::getDistanceMetre() { return this->getDistanceCumulee() * 1000; }
 // =====================================================================================================================
-
 // =====================================================================================================================
 // ========== SETTERS ==========
 void Point::setHour(int hour)      { Point::mHour = hour; }
@@ -78,10 +79,9 @@ void Point::setF3(double f3)       { Point::mF3 = f3; }
 void Point::setF4(double f4)       { Point::mF4 = f4; }
 void Point::setF5(double f5)       { Point::mF5 = f5; }
 void Point::setF6(double f6)       { Point::mF6 = f6; }
+void Point::setDistanceCumulee(double distanceCumulee) { Point::mDistanceCumulee = distanceCumulee; }
+void Point::setRssi(double rssi) { Point::mRssi = rssi; }
 
-void Point::setDistanceCumulee(double distanceCumulee) {
-    Point::mDistanceCumulee = distanceCumulee;
-}
 // =====================================================================================================================
 void Point::displayPoint()
 {
@@ -97,9 +97,6 @@ void Point::displayPoint()
     std::cout << "F4 : " << this->getF4() << std::endl;
     std::cout << "F5 : " << this->getF5() << std::endl;
     std::cout << "F6 : " << this->getF6() << std::endl;
-    std::cout << std::fixed << std::setprecision(7) << "Distance cumulee : " << this->getDistanceMetre() << "\n" << std::endl;
-}
-double Point::getDistanceMetre() {
-
-    return this->getDistanceCumulee() * 1000;
+    std::cout << std::fixed << std::setprecision(7) << "Distance cumulee : " << this->getDistanceMetre() << "" << std::endl;
+    std::cout << "RSSI : " << this->getRssi() << "\n" << std::endl;
 }
